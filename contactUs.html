@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - E Bus</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <header>
+    <h1>Contact E <span style="color: white;">Bus</span></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contactUs.html">Contact Us</a></li>
+        <li><a href="services.html">services</a></li>
+     
+       
+      </ul>
+    </nav>
+  </header>
+  
+  <section>
+    <h2 style="color:black">Book your Tickets</h2>
+    
+    <form style="margin-left: 600px;" id="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <div id="name-error" class="error-message">Please enter your name.</div>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <div id="email-error" class="error-message">Please enter a valid email.</div>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required rows="5"></textarea>
+      <div id="message-error" class="error-message">Please enter a message.</div>
+      
+      <button style="background-color: green;" type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 E Bus. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevents form from refreshing the page
+      
+      // Get values from form fields
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      // Get error message elements
+      const nameError = document.getElementById('name-error');
+      const emailError = document.getElementById('email-error');
+      const messageError = document.getElementById('message-error');
+      
+      // Reset error message visibility
+      nameError.style.display = 'none';
+      emailError.style.display = 'none';
+      messageError.style.display = 'none';
+
+      let isValid = true;
+
+      // Validate each field and display error if empty
+      if (!name) {
+        nameError.style.display = 'block';
+        isValid = false;
+      }
+      if (!email) {
+        emailError.style.display = 'block';
+        isValid = false;
+      }
+      if (!message) {
+        messageError.style.display = 'block';
+        isValid = false;
+      }
+
+      // If all fields are filled, display success message and reset form
+      if (isValid) {
+        alert('Thank you, ' + name + '! Your message has been sent successfully.');
+        document.getElementById('contact-form').reset();
+      }
+    });
+  </script>
+</body>
+</html>
